@@ -1,0 +1,7 @@
+JAVA基础：了解
+JSP  Servlet：了解
+JDBC：不会
+SSH：spring不会，其余了解
+JavaScript：了解
+CSS：了解
+数据库：MySql，MSSQL
