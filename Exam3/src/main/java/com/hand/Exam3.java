@@ -105,6 +105,7 @@ class ReadByHttpGet extends Thread {
 					BufferedWriter writer = new BufferedWriter(out);					
 					writer.write(object.toString());
 					writer.flush();
+					writer.close();
 					out.close();		
 					System.out.println(object.toString());
 					// JSON对象创建完成

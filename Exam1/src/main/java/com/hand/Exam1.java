@@ -1,7 +1,12 @@
 package com.hand;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -25,24 +30,48 @@ public class Exam1 {
 			String str = "http://www.manning.com/gsmith/SampleChapter1.pdf";
 			URL url = new URL(str);			//访问的URL
 			URLConnection connection = url.openConnection();	//打开URL，得到响应
-			File file = new File("SampleChapter1.pdf");
+			String fileName = "SampleChapter1.pdf";
+			System.out.println("\nStart Writing file: " + fileName);
+			System.out.println("\nWriting...");
 			//获取从URL返回的响应信息
 			InputStream is = connection.getInputStream();		//获取响应的输入流
-			InputStreamReader isr = new InputStreamReader(is);	//包装成InputStreamReader
-			BufferedReader br = new BufferedReader(isr);		//包装成BufferedReader
-			String line = null;
-			StringBuffer sbf = new StringBuffer();
-			while ((line = br.readLine())!=null) {				//逐行读取信息
-				sbf.append(line);								//读取行不位空时，将该行信息添加到StringBuffer中
+			BufferedInputStream bis = new BufferedInputStream(is,1000);
+//			BufferedReader br = new BufferedReader(bis);
+			
+//			InputStreamReader isr = new InputStreamReader(is);	//包装成InputStreamReader
+//			BufferedReader br = new BufferedReader(isr);		//包装成BufferedReader
+			
+			FileOutputStream fos = new FileOutputStream(fileName);
+			BufferedOutputStream bos = new BufferedOutputStream(fos,1000);
+//			BufferedWriter bw = new BufferedWriter(bos);
+			byte input[] = new byte[100];
+			
+			while(bis.read(input)!=-1) {
+				bos.write(input);
 			}
+//			FileWriter out = new FileWriter(fileName);
+//			BufferedWriter writer = new BufferedWriter(out);
 			
-			br.close();											//关闭各输入流
-			isr.close();
+			
+//			String line = null;
+//			StringBuffer sbf = new StringBuffer();
+//			while ((line = br.readLine())!=null) {				//逐行读取信息
+//				writer.write(line);
+//				sbf.append(line);								//读取行不位空时，将该行信息添加到StringBuffer中
+//			}
+//			writer.flush();
+			
+			//关闭输出流
+//			writer.close();
+//			br.close();
+			//关闭各输入流
+//			out.close();		
+//			isr.close();
+			bos.close();
+			fos.close();
+			bis.close();
 			is.close();
-			
-			System.out.println(sbf.toString());
-			
-	
+			System.out.println("\nFinish Writing file: " + fileName);
 		} catch(MalformedURLException e){
 			e.printStackTrace();
 		} catch(IOException e){
