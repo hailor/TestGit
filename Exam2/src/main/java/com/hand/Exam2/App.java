@@ -22,9 +22,9 @@ public class App
     public static void main( String[] args )
     {
         new Postpdf().start();
-        while (new File("SampleChapter1.pdf").exists()) {
-        	new ServerListener().start();
-		}
+       
+        new ServerListener().start();
+	
         
     }
 }
