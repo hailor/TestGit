@@ -47,7 +47,7 @@ public class Exam1 {
 			byte input[] = new byte[100];
 			
 			while(bis.read(input)!=-1) {
-				bos.write(input);
+				bos.write(input); 
 			}
 //			FileWriter out = new FileWriter(fileName);
 //			BufferedWriter writer = new BufferedWriter(out);
