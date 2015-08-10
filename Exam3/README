@@ -1,0 +1,7 @@
+項目執行：
+
+1.mvn clean
+
+2.mvn compile
+
+3.mvn exec:java -Dexec.mainClass="com.hand.Exam3.App"
