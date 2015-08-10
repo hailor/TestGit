@@ -1,0 +1,7 @@
+mvn clean
+mvn eclipse:eclipse
+mvn compile
+mvn exec:java -Dexec.mainClass="com.hand.Exam_2.App"
+mvn exec:java -Dexec.mainClass="com.hand.Exam_2.StartClient"
+先运行服务端App.java
+再运行客户端StartClient.java
