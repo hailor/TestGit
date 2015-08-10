@@ -1,7 +1,0 @@
-JAVA基础	了解
-JSP Servlet	了解
-JDBC		不了解
-SSH		了解
-Javascript	不了解
-Css		了解
-数据库		MySQL、MSSQL
