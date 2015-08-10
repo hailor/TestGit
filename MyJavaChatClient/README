@@ -1,0 +1,8 @@
+在eclipse中导入新创建的项目 
+
+执行mvn eclipse:eclipse
+
+执行mvn compile
+
+执行mvn exec:java -Dexec.mainClass="com.hand.StartClient
+"
