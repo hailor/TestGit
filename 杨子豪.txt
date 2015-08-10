@@ -1,7 +1,0 @@
-1、JAVA基础         了解
-2、JSP Servlert     了解
-3、JDBC             了解
-4、SSH              不了解
-5、JavaScript       不了解
-6、Css              了解
-7、数据库：mysql sqlServer2008 

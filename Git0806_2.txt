@@ -1,9 +1,0 @@
-Write something about you.
-
-1£©git pull 
-2£©git add . 
-3£©git commit -m "add zhuhuiliang info"
-4£©git push origin master:master
-5£©git pull
-6£©git status
-

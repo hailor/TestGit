@@ -1,7 +1,0 @@
-Java基础        了解
-JSP Servlet     完全不了解
-JDBC            完全不了解
-SSH             完全不了解
-Javascript      了解
-Css		了解
-数据库：	无

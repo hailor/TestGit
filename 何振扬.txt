@@ -1,7 +1,0 @@
-JAVA基础：了解
-JSP Servelet: 不了解
-JDBC: 了解
-SHH:  了解
-Javascript: 不了解    
-CSS:    了解
-数据库：  Mysql 
