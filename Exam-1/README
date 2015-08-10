@@ -1,0 +1,4 @@
+mvn clean
+mvn eclipse:eclipse
+mvn compile
+mvn exec:java -Dexec.mainClass="com.hand.Exam_1.App"
