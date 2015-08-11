@@ -1,0 +1,3 @@
+mvn compile
+mvn exec:java -Dexec.mainClass="com.hand.client.Myclient"
+mvn exec:java -Dexec.mainClass="com.hand.Server.ServerSo"
