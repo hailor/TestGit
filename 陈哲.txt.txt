@@ -1,0 +1,8 @@
+JAVA基础：了解不多
+JSP Servlet：无
+JDB:无
+SSH：无
+Javascript：无
+Css：无
+数据库：无
+ 

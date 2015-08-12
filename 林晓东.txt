@@ -1,0 +1,8 @@
+Java基础：了解
+JSP：了解
+Servlert：了解
+JDBC：了解
+SSH：了解struts2、hibernate，不了解spring
+Javascript：不了解
+Css：不了解
+数据库：sqlserver

@@ -1,0 +1,7 @@
+java基础	了解
+JSP Servlet	了解
+jdbc		了解
+ssh		了解
+javascript	了解	
+css		了解
+数据库：	Orical/MySql/SqlServer

@@ -1,0 +1,7 @@
+JAVA基础 ：熟悉
+JSP Servlet：一般
+JDBC：熟悉
+SSH：一般
+JavaScript：不了解
+Css：一般
+数据库：Mysql

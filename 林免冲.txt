@@ -1,0 +1,7 @@
+JAVA基础 熟悉
+JSP Servlert了解
+JDBC 了解
+SSH 了解
+Javascript 了解
+Css 了解
+数据库：MySQL，SQL Server，Oracle

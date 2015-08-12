@@ -1,0 +1,7 @@
+JAVA 基础     了解
+JSP Servlet          无基础
+css           无基础
+JDBS          无基础
+SSH           无基础
+Javascript    无基础
+数据库        无基础
