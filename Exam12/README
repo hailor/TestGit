@@ -1,0 +1,4 @@
+运行程序的步骤：
+mvn compile
+mvn exec:java -Dexec.mainClass="com.hand.Exam12.SocketServer"
+mvn exec:java -Dexec.mainClass="com.hand.Exam12.SocketClient"
