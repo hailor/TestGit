@@ -1,0 +1,3 @@
+
+mvn complise
+mvn exec:java -Dexec.mainClass="com.hand.Exam_1deom"
