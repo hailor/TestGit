@@ -1,0 +1,4 @@
+//	mysql账号密码均为root,如有不同请在com.hand.App中修改思密达
+mvn clean
+mvn compile
+mvn exec:java -Dexec.mainClass="com.hand.App"

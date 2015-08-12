@@ -1,0 +1,2 @@
+socket客户端启动类StartClient.java
+点击连接到服务器即可接收来自服务器发送的文件。
