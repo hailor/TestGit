@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.hand</groupId>
-  <artifactId>Exam2</artifactId>
+  <artifactId>exam2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Exam2</name>
+  <name>exam2</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -21,10 +21,12 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-		<groupId>org.apache.httpcomponents</groupId>
-		<artifactId>httpclient</artifactId>
-		<version>4.5</version>
-</dependency>
+    <!-- 添加mysql依赖 -->
+  	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.18</version>
+	</dependency>
+    
   </dependencies>
 </project>

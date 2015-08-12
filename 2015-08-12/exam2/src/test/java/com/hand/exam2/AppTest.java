@@ -1,4 +1,4 @@
-package com.hand.Exam1;
+package com.hand.exam2;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

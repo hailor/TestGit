@@ -1,75 +1,97 @@
-package com.hand.exam1;
+package com.hand.Exam1;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
 /**
- * Hello world!
+ * Download file
  *
  */
 public class App 
 {
     public static void main( String[] args )
     {
-    	
-        Connection conn = null;
-        Statement st = null;
-        ResultSet rs = null;
-        
-        
-    	Scanner sc = new Scanner(System.in);
-    	System.out.println("请输入要连接的本地数据库名称：");
-    	String dbname = sc.next();
-    	System.out.println("请输入连接数据库的用户号：");
-    	String dbuser = sc.next();
-    	System.out.println("请输入连接数据库的用户密码：");
-    	String pwd = sc.next();
-    	System.out.println("请输入Country ID:"); 
-    	int countryid = sc.nextInt();
-    	try {
-    		
-    		Class. forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + dbname,dbuser,pwd);
-        	String sql ="select cou.country,ci.city_id,ci.city from country cou left join city ci on ci.country_id = cou.country_id where cou.country_id = " + countryid;
-			
-        	st = conn.createStatement();
-        	rs = st.executeQuery(sql);
-			
-			
-			System.out.println("城市ID |城市名称");
-			
-			while (rs.next()) {
-				System.out.println("Country " + rs.getString("country") + "的城市 ->");
-				System.out.println(rs.getInt("city_id") + "|" + rs.getString("city"));
-			}
-			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				rs.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-			try {
-				st.close();
-			} catch (Exception e3) {
-				e3.printStackTrace();
-			}
-			try {
-				conn.close();
-			} catch (Exception e4) {
-				e4.printStackTrace();
-			}
-			
-		}
-    
+        //new Getpdf().start();
+    	new Postpdf().start();
     }
+}
+
+//class Getpdf extends Thread{
+class Postpdf extends Thread{
+	HttpClient client = HttpClients.createDefault();
+	@Override
+	public void run() {
+		try {
+			
+			HttpGet get = new HttpGet("http://www.manning.com/gsmith/SampleChapter1.pdf");
+			HttpResponse response = client.execute(get);
+			HttpEntity entity = response.getEntity();
+			byte input [] = EntityUtils.toByteArray(entity);
+			
+			FileOutputStream fos = new FileOutputStream(new File("SampleChapter1.pdf"));
+			BufferedOutputStream bos = new BufferedOutputStream(fos);
+			bos.write(input);
+			System.out.println("SampleChapter1.pdf下载完成！");
+			//System.out.println(input.toString());
+			
+//			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//			connection.addRequestProperty("encoding" , "UTF-8");
+//			connection.setDoInput(true);
+//			connection.setDoOutput(true);
+//			connection.setRequestMethod("POST");
+//			
+//			OutputStream os = connection.getOutputStream();
+//            OutputStreamWriter osw = new OutputStreamWriter(os);
+//            BufferedWriter bw = new BufferedWriter(osw);
+//			
+//			
+//			InputStream is = connection.getInputStream();
+//			BufferedInputStream bis = new BufferedInputStream(is);
+//			
+//			FileOutputStream fos = new FileOutputStream(new File("SampleChapter1.pdf"));
+//			BufferedOutputStream bos = new BufferedOutputStream(fos);
+//        	
+//			byte[] input = new byte[1000];
+//            
+//             while (bis.read(input)!= -1) {
+//            	 bos.write(input); 
+//             }
+//             
+//             bw.close();
+//             osw.close();
+//             os.close();
+//             is.close();
+//             bis.close();
+//             bos.close();
+//             fos.close();
+//
+//             //System.out.println("");
+			System.out.println("下载完成");
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

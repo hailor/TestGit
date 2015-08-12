@@ -1,11 +1,17 @@
-package com.hand.exam2;
+package com.hand.Exam2;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
 /**
  * Hello world!
@@ -15,69 +21,36 @@ public class App
 {
     public static void main( String[] args )
     {
-    	
-        Connection conn = null;
-        Statement st = null;
-        ResultSet rs = null;
-        boolean isouput=true;
+        new Postpdf().start();
+       
+        new ServerListener().start();
+	
         
-    	Scanner sc = new Scanner(System.in);
-    	System.out.println("请输入要连接的本地数据库名称：");
-    	String dbname = sc.next();
-    	System.out.println("请输入连接数据库的用户号：");
-    	String dbuser = sc.next();
-    	System.out.println("请输入连接数据库的用户密码：");
-    	String pwd = sc.next();
-    	System.out.println("Customer ID:"); 
-    	int customerid = sc.nextInt();
-    	try {
-    		
-    		Class. forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + dbname,dbuser,pwd);
-        	String sql ="select fi.title,inv.film_id,re.rental_date,cus.first_name,cus.last_name from customer cus"+
-        			 " join payment p on cus.customer_id = p.customer_id"+
-        			 " join rental re on re.rental_id = p.rental_id"+
-        			 " join inventory inv on re.inventory_id = inv.inventory_id"+
-        			 " join film fi on fi.film_id = inv.film_id " +
-        			 " where p.customer_id =" + customerid +
-        			 " group by inv.film_id" +
-        			 " order by inv.film_id desc";
-			
-        	st = conn.createStatement();
-        	rs = st.executeQuery(sql);
-        	
-			while (rs.next()) {
-				if(isouput){
-				System.out.println(rs.getString("first_name") + rs.getString("last_name") + "租用的Film-­‐>");
-				System.out.println("Film ID | Film名称 | 租用时间 ");
-				isouput=false;
-				}
-				System.out.println(rs.getString("film_id") + "|" + rs.getString("title") + " | " + rs.getDate("rental_date"));
-			}
-			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				rs.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-			try {
-				st.close();
-			} catch (Exception e3) {
-				e3.printStackTrace();
-			}
-			try {
-				conn.close();
-			} catch (Exception e4) {
-				e4.printStackTrace();
-			}
-			
-		}
-    
     }
 }
+class Postpdf extends Thread{
+	HttpClient client = HttpClients.createDefault();
+	@Override
+	public void run() {
+		try {
+			
+			HttpGet get = new HttpGet("http://www.manning.com/gsmith/SampleChapter1.pdf");
+			HttpResponse response = client.execute(get);
+			HttpEntity entity = response.getEntity();
+			byte input [] = EntityUtils.toByteArray(entity);
+			if(new File("SampleChapter1.pdf").exists()){
+				new File("SampleChapter1.pdf").delete();
+			}
+			FileOutputStream fos = new FileOutputStream(new File("SampleChapter1.pdf"));
+			BufferedOutputStream bos = new BufferedOutputStream(fos);
+			bos.write(input);
+			System.out.println("SampleChapter1.pdf下载完成！");
+			System.out.println("下载完成");
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
