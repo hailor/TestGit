@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hand</groupId>
+  <artifactId>maven_web_test</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>maven_web_test Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <!-- 在本实例中解决编码问题的主要方法 -->
+   <properties>  
+        	<!-- 文件拷贝时的编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>  
+        	<!--编译时的编码 -->
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>  
+    </properties>  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- 添加servlet依赖 -->
+    <dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>2.5</version>
+		<scope>provided</scope> 
+		<!-- 没scope，报java.lang.ClassCastException: 
+		com.hand.filter.FilterTwo cannot be cast to javax.servlet.Filter异常 -->
+	</dependency>
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.18</version>
+	</dependency>
+    
+    
+  </dependencies>
+  <build>
+    <finalName>maven_web_test</finalName>
+    <!-- 添加Tomcat依赖 -->
+    
+    <!-- Tomcat 6
+    <pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.3-SNAPSHOT</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						 指定编码格式，否则在DOS下运行mvn命令时当发生文件资源copy时将使用系统默认使用GBK编码 
+					</configuration>
+				</plugin>
+			</plugins>
+				
+		</pluginManagement>
+		-->
+			
+	<pluginManagement>
+      <plugins>
+       <!-- <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat6-maven-plugin</artifactId>
+          <version>2.0</version>
+          
+        </plugin>-->
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.0</version>
+         <!-- <configuration>
+				 <encoding>UTF-8</encoding>
+				指定编码格式，否则在DOS下运行mvn命令时当发生文件资源copy时将使用系统默认使用GBK编码,这个方法在 本测试实例中不起作用
+		  </configuration> --> 
+        </plugin>
+      </plugins>
+    </pluginManagement>
+			
+		
+    
+    
+  </build>
+</project>

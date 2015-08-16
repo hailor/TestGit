@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/hand/filter/FilterOne.java=UTF-8
+encoding//src/main/java/com/hand/filter/FilterTwo.java=UTF-8
+encoding//src/main/java/com/hand/servlet/LoginServlet.java=UTF-8
+encoding//src/main/webapp/addfilm.jsp=UTF-8
+encoding//src/main/webapp/foreditfilm.jsp=UTF-8
+encoding//src/main/webapp/index.jsp=UTF-8
+encoding//src/main/webapp/order_forward/index.jsp=UTF-8
+encoding//src/main/webapp/servlet_login/error.jsp=UTF-8
+encoding//src/main/webapp/servlet_login/login.jsp=UTF-8
+encoding//src/main/webapp/servlet_login/success.jsp=UTF-8
+encoding/<project>=UTF-8
