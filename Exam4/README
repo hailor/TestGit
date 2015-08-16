@@ -1,7 +1,7 @@
-数据库相关信息：
+1、数据库相关信息：
 数据库为：sakila
 用户名：root
 密码：root
-程序运行步骤：
+2、程序运行步骤：
 mvn comcat:run
 在浏览器地址栏输入：http://localhost:8080/Exam4/index.jsp

@@ -31,7 +31,7 @@ public class FilmAdd2 extends HttpServlet {
 			boolean flag = filmDao.save(film);
 			if(flag){
 				out.println("<script>alert('新增电影成功！');</script>");
-				out.flush();
+				//out.flush();
 				response.sendRedirect("FilmShow");
 			}else{
 				out.println("<script>alert('新增电影失败，请重新添加！');history.go(-1);</script>");
