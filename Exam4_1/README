@@ -1,0 +1,4 @@
+执行步骤：
+1.执行命令：        mvn compile
+2.执行命令：        mvn tomcat:run
+3.在浏览器地址栏输入：       http://localhost:8080/Exam4_1/index.jsp
