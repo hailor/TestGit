@@ -1,0 +1,87 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <filter>
+  	<filter-name>PermissionFilter</filter-name>
+  	<display-name>PermissionFilter</display-name>
+  	<description></description>
+  	<filter-class>filter.PermissionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>PermissionFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<display-name>LoginServlet</display-name>
+  	<description></description>
+  	<servlet-class>servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>FilmShow</servlet-name>
+  	<display-name>FilmShow</display-name>
+  	<description></description>
+  	<servlet-class>servlet.FilmShow</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>FilmAdd</servlet-name>
+  	<display-name>FilmAdd</display-name>
+  	<description></description>
+  	<servlet-class>servlet.FilmAdd</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>FilmAdd2</servlet-name>
+  	<display-name>FilmAdd2</display-name>
+  	<description></description>
+  	<servlet-class>servlet.FilmAdd2</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>FilmDel</servlet-name>
+  	<display-name>FilmDel</display-name>
+  	<description></description>
+  	<servlet-class>servlet.FilmDel</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>FilmEdit</servlet-name>
+  	<display-name>FilmEdit</display-name>
+  	<description></description>
+  	<servlet-class>servlet.FilmEdit</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>FilmUpdate</servlet-name>
+  	<display-name>FilmUpdate</display-name>
+  	<description></description>
+  	<servlet-class>servlet.FilmUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FilmShow</servlet-name>
+  	<url-pattern>/FilmShow</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FilmAdd</servlet-name>
+  	<url-pattern>/FilmAdd</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FilmAdd2</servlet-name>
+  	<url-pattern>/FilmAdd2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FilmDel</servlet-name>
+  	<url-pattern>/FilmDel</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FilmEdit</servlet-name>
+  	<url-pattern>/FilmEdit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FilmUpdate</servlet-name>
+  	<url-pattern>/FilmUpdate</url-pattern>
+  </servlet-mapping>
+</web-app>
