@@ -11,6 +11,11 @@
 <title>删除页面</title>
 </head>
 <body>
+ <% if (request.getAttribute("return_uri") != null) { %>
+         <input type ="hidden" name="return_uri"
+             value=" <%= request.getAttribute("return_uri" ) %>" >
+         <% } %>
+
 	<%
 	//String num = request.getAttribute("num").toString();
 	ArrayList<Film> filmlist =(ArrayList)request.getAttribute("filmlist");

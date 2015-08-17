@@ -27,24 +27,21 @@ public class EditServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = null;
+		
 		String film_id = req.getParameter("film_id");
 		String fiml_title = req.getParameter("title");
 		String fiml_description = req.getParameter("description");
 		String fiml_lang = req.getParameter("language");
 		String lang_id = req.getParameter("language_id");
 		Film fi = new Film();
-		fi.setFilm_id(Long.valueOf(film_id));
+		fi.setFilm_id(Integer.valueOf(film_id));
 		fi.setTitle(fiml_title);
 		fi.setDescription(fiml_description);
 		fi.setLanguage(fiml_lang);
-		fi.setLanguage_id(Long.valueOf(lang_id));
-		boolean bool = cku.editfilm(fi);
-		if(bool){
-			req.setAttribute("editresult", "修改成功");
-		}
-		else{
-			req.setAttribute("editresult", "修改失败");
-		}
+		fi.setLanguage_id(Integer.valueOf(lang_id));
+		System.out.println(fi.toString());
+		String result = cku.editfilm(fi);
+		req.setAttribute("editresult", result);
 		rd = req.getRequestDispatcher("/editresult.jsp");
 		rd.forward(req, resp);
 		

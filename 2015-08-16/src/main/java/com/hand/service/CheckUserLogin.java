@@ -55,7 +55,7 @@ public class CheckUserLogin {
 			while(rs.next()){
 				Film film = new Film();
 				
-				film.setFilm_id(rs.getLong("film_id"));
+				film.setFilm_id(rs.getInt("film_id"));
 				film.setTitle(rs.getString("title"));
 				film.setDescription(rs.getString("description"));
 				film.setLanguage(rs.getString("name"));
@@ -205,11 +205,11 @@ public class CheckUserLogin {
 
 			while(rs.next()){
 				if(rs.getLong("film_id")==film_id){
-					film.setFilm_id(rs.getLong("film_id"));
+					film.setFilm_id(rs.getInt("film_id"));
 					film.setTitle(rs.getString("title"));
 					film.setDescription(rs.getString("description"));
 					film.setLanguage(rs.getString("name"));
-					film.setLanguage_id(rs.getLong("language_id"));
+					film.setLanguage_id(rs.getInt("language_id"));
 				}
 			}
 
@@ -232,13 +232,15 @@ public class CheckUserLogin {
 
 	}
 	//根据Film对象修改信息
-	public boolean editfilm(Film film){
+	public String editfilm(Film film){
 		boolean bool = false;
+		String result = null;
 		try {
 			conn = ConnectionFactory.getInstance ().makeConnection ();
-			conn.setAutoCommit (false) ;
-			bool = userDao.editfilm(conn, film);
-
+			conn.setAutoCommit (false);
+			bool=userDao.editfilm(conn, film);
+			if(bool){result = "修改完成";}
+			else{result="修改失败";}
 			
 		} catch (SQLException e) {
 			e.printStackTrace ();
@@ -254,6 +256,6 @@ public class CheckUserLogin {
 				e.printStackTrace ();
 			}
 		}
-		return bool;
+		return result;
 	}
 }

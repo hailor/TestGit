@@ -6,10 +6,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>登录页面</title>
 </head>
+<script type ="text/javascript">
+	<%
+	String msg = "";
+	msg=(String)session.getAttribute("flag");
+	if(msg!=null&&msg.equals("error"));{%>
+		alert(<%=msg%>);
+	<%}%>
+	
+</script>
 <body>
 	<form action="<%= request.getContextPath()%>\LoginCheckServlet" method="post">
 		用户名：<input type="text" name="cname">
 		<input type="submit" name="submit" value="提交">
 	</form>
 </body>
+
 </html>

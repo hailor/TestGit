@@ -18,7 +18,7 @@ public class FilterOne implements Filter {
 	 */
 	public FilterOne() {
 		
-		System.out.println(" =========	filter_one构造函数	=========" );
+		//System.out.println(" =========	filter_one构造函数	=========" );
 	}
 	/**
 	 * @see Filter#init(FilterConfig)
@@ -30,7 +30,7 @@ public class FilterOne implements Filter {
 		//获取初始化参数,getinitParameter方法:返回以参数param命名的初始化参数的值，返回字符串类型，若参数不存在，则返回null
 		String initParam = fConfig.getInitParameter("param");
 		//打印参数
-		System.out.println("=======  第一个过滤器初始化参数 name = param; value = " + initParam + " ======= ");
+		//System.out.println("=======  第一个过滤器初始化参数 name = param; value = " + initParam + " ======= ");
 		//从web.xml里获取name为Encoding的参数
 		charEncoding = fConfig.getInitParameter("Encoding");
 		if(charEncoding == null) {

@@ -14,7 +14,7 @@ import javax.servlet.ServletResponse;
 public class FilterTwo implements Filter {
 
 	public FilterTwo(){
-		System.out.println(" =========	filter_two构造函数	=========" );
+		//System.out.println(" =========	filter_two构造函数	=========" );
 	}
 
 	public void init(FilterConfig arg0) throws ServletException {

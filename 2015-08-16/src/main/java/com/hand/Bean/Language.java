@@ -1,6 +1,6 @@
 package com.hand.Bean;
 
-public class Language extends IdEntity {
+public class Language {
 	private Long language_id;
 	private String name;
 	public Long getLanguage_id() {

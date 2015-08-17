@@ -39,11 +39,13 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public boolean editfilm(Connection conn, Film film) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("update film set title =?,description=?,language_id=? where film_id = ?");
+		String sql = "update film set title =?,description=?,language_id=? where film_id = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
 		ps.setString(1, film.getTitle());
 		ps.setString(2, film.getDescription());
-		ps.setLong(3, film.getLanguage_id());
-		ps.setLong(4, film.getFilm_id());
+		ps.setInt(3, film.getLanguage_id());
+		ps.setInt(4, film.getFilm_id());
 		return ps.execute();
 	}
 

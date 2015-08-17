@@ -1,6 +1,6 @@
 package com.hand.Bean;
 
-public class User extends IdEntity {
+public class User {
 	private String username;
 
 	public String getUsername() {

@@ -31,7 +31,8 @@ public class LoginCheckServlet extends HttpServlet {
 		 String forward = null;
 		 //输入为空
 		 if(uname == null){
-			 req.setAttribute ("msg", "用户名为空");
+			 //req.setAttribute ("msg", "用户名为空");
+			 req.getSession().setAttribute("msg", "error");
 			 rd = req.getRequestDispatcher("/login/login.jsp");
 			 rd.forward(req, resp);
 		 }
@@ -40,12 +41,19 @@ public class LoginCheckServlet extends HttpServlet {
 			 User user = new User ();
 			 user.setUsername(uname);
 			 boolean bool = cku.check(user);
+			 System.out.println("checkuser:"+bool);
 			 if(bool){
-				 forward = "/login/login.jsp";
+				 //登录成功 
+				 forward = "/index.jsp";
+				 req.getSession().setAttribute ("msg", "login");
+				 req.getSession().setAttribute("flag", "success");
 				 System.out.println("登录成功");
 			 }
 			 else{
-				 forward = "/index.jsp";
+				 //登录失败
+				 req.getSession().setAttribute("msg", "error");
+				 req.getSession().setAttribute("flag", "error");
+				 forward = "/login/login.jsp";
 			 }
 			 rd = req.getRequestDispatcher (forward) ;
              rd.forward (req, resp) ;

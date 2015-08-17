@@ -26,9 +26,11 @@ public class DelFileServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String file_id = req.getParameter("film_id");
+		
 		RequestDispatcher rd = null;
 		Film film = new Film();
-		film.setFilm_id(Long.valueOf(file_id));
+		
+		film.setFilm_id(Integer.valueOf(file_id));
 		boolean bool = cku.delfilm(film);
 		if(bool){
 			req.setAttribute("delresult", "删除成功");

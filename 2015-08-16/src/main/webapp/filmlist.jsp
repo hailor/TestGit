@@ -11,12 +11,18 @@
 <title>film表的显示</title>
 </head>
 <body>
+ <% if (request.getAttribute("return_uri") != null) { %>
+         <input type ="hidden" name="return_uri"
+             value=" <%= request.getAttribute("return_uri" ) %>" >
+         <% } %>
+
 	<a href="<%=request.getContextPath()%>/index.jsp">点击返回首页</a>
 	<h2>film表的显示</h2>
 	<%
 	//String num = request.getAttribute("num").toString();
 	ArrayList<Film> filmlist =(ArrayList)request.getAttribute("filmlist");
 	for(int i = 0 ; i<filmlist.size();i++){%>
+	
 	film_id: <%=filmlist.get(i).getFilm_id() %>,
 	title : <%=filmlist.get(i).getTitle() %>,
 	Description:<%=filmlist.get(i).getDescription() %>,

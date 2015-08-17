@@ -7,6 +7,11 @@
 <title>插入结果</title>
 </head>
 <body>
+ <% if (request.getAttribute("return_uri") != null) { %>
+         <input type ="hidden" name="return_uri"
+             value=" <%= request.getAttribute("return_uri" ) %>" >
+         <% } %>
+
 	<%=request.getAttribute("addresult") %> <br>
  <a href="<%=request.getContextPath()%>/index.jsp">点击返回首页</a>
 </body>

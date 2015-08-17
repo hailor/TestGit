@@ -1,6 +1,7 @@
 package com.hand.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hand.Bean.Film;
+import com.hand.Bean.Language;
 import com.hand.service.CheckUserLogin;
 
 public class EditFilmServlet extends HttpServlet {
@@ -29,6 +31,8 @@ public class EditFilmServlet extends HttpServlet {
 		RequestDispatcher rd = null;
 		Film fi = cku.getFile(Long.valueOf(film_id));
 		System.out.println(film_id);
+		ArrayList<Language> langlist = cku.getLanguage();
+		req.setAttribute("langlist", langlist);
 		req.setAttribute("editfilm", fi);
 		rd = req.getRequestDispatcher("/foreditfilm.jsp");
 		rd.forward(req, resp);

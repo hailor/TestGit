@@ -29,8 +29,9 @@ public class GetFilmListServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 RequestDispatcher rd = null;
+		 String del = null;
 		 ArrayList<Film> filmlist = cku.getfilmlist();
-		 String del = req.getParameter("del");
+		 del = req.getParameter("del");
 		 //String filmlist[] = cku.getfilmlist();
 		 //String film = null;
 		 //ResultSet filmlist = cku.getfilmlist();
@@ -52,8 +53,9 @@ public class GetFilmListServlet extends HttpServlet {
 		 //System.out.println("数据库访问完成");
 		 //System.out.println(film);
 		 req.setAttribute("filmlist", filmlist);
-		 rd = req.getRequestDispatcher("/filmlist.jsp");
+		// rd = req.getRequestDispatcher("/filmlist.jsp");
 		 System.out.println(del);
+		 if(del.equals("getlist")){rd = req.getRequestDispatcher("/filmlist.jsp");}
 		 if(del.equals("del")){rd = req.getRequestDispatcher("/deletefilm.jsp");}
 		 if(del.equals("edit")){rd = req.getRequestDispatcher("/editfilm.jsp");}
 		 rd.forward(req, resp);

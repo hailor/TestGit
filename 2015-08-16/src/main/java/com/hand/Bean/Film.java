@@ -1,21 +1,23 @@
 package com.hand.Bean;
 
-public class Film extends IdEntity {
-	private Long film_id;
+public class Film {
+	private int film_id;
 	private String title;
 	private String description;
 	private String language;
-	private Long language_id;
-	public Long getLanguage_id() {
+	private int language_id;
+
+	public int getLanguage_id() {
 		return language_id;
 	}
-	public void setLanguage_id(Long language_id) {
+	public void setLanguage_id(int language_id) {
 		this.language_id = language_id;
 	}
-	public Long getFilm_id() {
+
+	public int getFilm_id() {
 		return film_id;
 	}
-	public void setFilm_id(Long film_id) {
+	public void setFilm_id(int film_id) {
 		this.film_id = film_id;
 	}
 	public String getTitle() {
@@ -38,6 +40,6 @@ public class Film extends IdEntity {
 	}
 	@Override
 	public String toString() {
-		return "Film[ film_id=" + film_id + "title=" + title + "description="+description+"language="+language+"language_id="+language_id+"\n";
+		return "Film[ film_id=" + film_id + ",title=" + title + ",description="+description+",language="+language+",language_id="+language_id+"]";
 	}
 }
