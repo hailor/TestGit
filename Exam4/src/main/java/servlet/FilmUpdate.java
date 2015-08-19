@@ -1,9 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,10 +35,10 @@ public class FilmUpdate extends HttpServlet {
 			}else{
 				msg = "更新电影失败！";
 			}
-			request.setAttribute("msg", msg);
-			/*RequestDispatcher rd = request.getRequestDispatcher("msg.jsp");
-			rd.forward(request, response);*/
-			response.sendRedirect("FilmShow");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alter("+msg+");window.location='FilmShow';</script>");
+			//response.sendRedirect("FilmShow");
+			out.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

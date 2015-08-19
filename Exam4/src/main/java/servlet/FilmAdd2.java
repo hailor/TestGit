@@ -28,14 +28,11 @@ public class FilmAdd2 extends HttpServlet {
 		FilmDao filmDao = new FilmDaoImpl();
 		try {
 			PrintWriter out = response.getWriter();
-			boolean flag = filmDao.save(film);
-			if(flag){
-				out.println("<script>alert('新增电影成功！');</script>");
-				//out.flush();
-				response.sendRedirect("FilmShow");
+			if(filmDao.save(film)){
+				out.write("<script>alert('新增电影成功！');window.location='FilmShow';</script>");
+				//response.sendRedirect("FilmShow");
 			}else{
 				out.println("<script>alert('新增电影失败，请重新添加！');history.go(-1);</script>");
-				out.flush();
 			}
 			out.close();
 		} catch (SQLException e) {

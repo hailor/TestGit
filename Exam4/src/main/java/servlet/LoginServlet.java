@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,12 +32,10 @@ public class LoginServlet extends HttpServlet {
 				ResultSet rs = ps.executeQuery();
 				while(rs.next()){
 					request.getSession().setAttribute("first_name", first_name);
-					RequestDispatcher rd = request.getRequestDispatcher("success.jsp");
-					rd.forward(request, response);
+					response.sendRedirect("success.jsp");
 				}
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('登录失败，用户名错误，请重新登录！');history.go(-1);</script>");
-				out.flush();
 				out.close();
 			} catch (SQLException e) {
 				e.printStackTrace();

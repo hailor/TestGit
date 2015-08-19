@@ -24,15 +24,14 @@ public class FilmDel extends HttpServlet {
 		FilmDao filmDao = new FilmDaoImpl();
 		try {
 			PrintWriter out = response.getWriter();
+			String msg = "";
 			if(filmDao.delete(film_id)){
-				out.println("<script>alert('删除电影成功！');</script>");
-				//out.flush();
-				response.sendRedirect("FilmShow");
+				msg = "删除电影成功！";
 			}else{
-				out.println("<script>alert('删除电影失败！');</script>");
-				//out.flush();
-				response.sendRedirect("FilmShow");
+				msg = "删除电影失败！";
 			}
+			out.println("<script>alert('"+msg+"');window.location='FilmShow';</script>");
+			//response.sendRedirect("FilmShow");
 			out.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
