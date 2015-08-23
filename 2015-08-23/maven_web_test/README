@@ -1,0 +1,6 @@
+在src -- main -- java -- dbconfig.properties设置数据库
+在命令窗口执行：mvn compile
+mvn tomcat:run
+在浏览器:localhost:8080/maven_web_test运行
+
+//插入，修改，删除都失败，目前的头绪是主键策略问题
