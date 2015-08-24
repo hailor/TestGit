@@ -97,11 +97,9 @@ public class UpdateServlet extends HttpServlet {
 			ps.setString(5, store_id);
 			ps.setString(6, active);
 
-			RequestDispatcher rd = null;
 			ps.execute();
-			request.setAttribute("message", "修改成功！");
-			rd = request.getRequestDispatcher("/jsp/index.jsp");
-			rd.forward(request, response);
+			
+			response.sendRedirect(request.getContextPath()+"/jsp/index.jsp");
 
 		} catch (SQLException e) {
 			e.printStackTrace();

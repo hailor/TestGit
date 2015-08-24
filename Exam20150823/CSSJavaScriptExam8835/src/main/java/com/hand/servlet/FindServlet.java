@@ -44,13 +44,25 @@ public class FindServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int page = (Integer.parseInt(request.getParameter("page"))-1)*15;
+		String msg_num = request.getParameter("msg_num");
 		try {
-			String sql = "select * from customer,address where customer.address_id=address.address_id";
+			String sql = "select * from customer,address where customer.address_id=address.address_id limit "+page+","+msg_num;
+			String count = "select count(*) as count from customer,address where customer.address_id=address.address_id";
 			Connection conn = ConnectionFactory.getInstance().getConnection();
 			Statement st;
 			st = conn.createStatement();
-			ResultSet rs = st.executeQuery(sql);
+			ResultSet rs2 = st.executeQuery(count);
+			rs2.next();
+			String length = rs2.getString("count");
+			
 			JsonArray json = new JsonArray();
+			JsonObject msgLen = new JsonObject();
+			msgLen.addProperty("msgLen", length);
+			json.add(msgLen);
+			rs2.close();
+			
+			ResultSet rs = st.executeQuery(sql);
 //			String json="[";
 //			String json ="{\"value\":\"xx\",\"row\":1,\"col\":1}";      
 			while(rs.next()){
@@ -70,6 +82,8 @@ public class FindServlet extends HttpServlet {
 			out.write(json.toString());
 			out.flush();
 			out.close();
+			conn.close();
+			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -77,14 +77,7 @@
                 </table>
             </div>
             <nav>
-                <ul class="pagination">
-                    <li class="disabled"><a href="#">&laquo;</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
+                <ul class="pagination" id="ByPage">
                 </ul>
             </nav>
         </div>
@@ -93,31 +86,12 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        $.post("../FindServlet", {
-            page: "1"
-        }, function (data) {
-            var objs = eval(data);
-            var tb = $("#tbody");
-//        tbody.empty();
-            for (var i = 0; i < objs.length; i++) {
-                tb.append('<tr><td><a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" href="../UpdateServlet?id=' + objs[i].customer_id + '">编辑</a><div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"><div class="modal-dialog" role="document"><div class="modal-content"></div></div></div>|<a class="js-del" id="' + objs[i].customer_id + '">删除</a></td><td>' + objs[i].first_name + '</td><td>' + objs[i].last_name + '</td><td>' + objs[i].address + '</td><td>' + objs[i].email + '</td><td>' + objs[i].customer_id + '</td><td>' + objs[i].last_update + '</td></tr>');
-            }
-            $(".js-del").on("click", function () {
-                var bool = confirm("确认删除吗？");
-                if (bool) {
-                    $.get("../DeleteServlet", {
-                        id: $(this).attr("id")
-                    }, function (data) {
-                        findMessage();
-                        alert("删除成功！");
-                    }).error(function () {
-                        alert("删除失败！");
-                    });
-                }
-            });
-        }).error(function () {
-            alert("error");
-        });
+
+        var js_page = 1;
+        var js_msg_num = 15;
+        var js_msg_len;
+
+        findMessage();
 
 
         $("#addCustomerBtn").on("click", function () {
@@ -131,16 +105,30 @@
         });
 
 
-        function findMessage(){
+        function findMessage() {
+
             $.post("../FindServlet", {
-                page: "1"
+                page: js_page,
+                msg_num: js_msg_num
             }, function (data) {
                 var objs = eval(data);
+                js_msg_len = objs[0].msgLen;
                 var tb = $("#tbody");
                 tb.empty();
-                for (var i = 0; i < objs.length; i++) {
+                for (var i = 1; i < objs.length; i++) {
                     tb.append('<tr><td><a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" href="../UpdateServlet?id=' + objs[i].customer_id + '">编辑</a><div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"><div class="modal-dialog" role="document"><div class="modal-content"></div></div></div>|<a class="js-del" id="' + objs[i].customer_id + '">删除</a></td><td>' + objs[i].first_name + '</td><td>' + objs[i].last_name + '</td><td>' + objs[i].address + '</td><td>' + objs[i].email + '</td><td>' + objs[i].customer_id + '</td><td>' + objs[i].last_update + '</td></tr>');
                 }
+
+                var pages = $("#ByPage");
+                page_num = Math.ceil(js_msg_len / js_msg_num);
+                pages.empty();
+                pages.append('<li><a id="Previous">&laquo;</a></li>');
+                for (var j = 1; j <= page_num; j++) {
+                    pages.append('<li><a class="js-page" id="page' + j + '">' + j + '</a></li>');
+                }
+                pages.append('<li><a id="Next">&raquo;</a></li>');
+
+
                 $(".js-del").on("click", function () {
                     var bool = confirm("确认删除吗？");
                     if (bool) {
@@ -154,6 +142,33 @@
                         });
                     }
                 });
+
+                $(".js-page").on("click", function () {
+                    var pagenum = $(this).attr("id");
+                    js_page = pagenum.substring(4,pagenum.length);
+                    findMessage();
+                });
+
+                $("#Previous").on("click", function () {
+                    if(js_page>1){
+                        js_page--;
+                        findMessage();
+                    }
+                    else{
+                        $("#Previous").addClass("disable previous");
+                    }
+                });
+
+                $("#Next").on("click",function(){
+                    if(js_page<page_num){
+                        js_page++;
+                        findMessage();
+                    }
+                    else{
+                        $("#Next").addClass("disable previous");
+                    }
+                })
+                
             }).error(function () {
                 alert("error");
             });

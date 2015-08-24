@@ -62,13 +62,10 @@ public class AddServlet extends HttpServlet {
 			ps.setString(5, "1");
 			ps.setString(6, "1");
 			ps.setString(7, "2015-08-23 22:04:36");
-
-
-			RequestDispatcher rd = null;
 			ps.execute();
-			request.setAttribute("message", "添加成功！");
-			rd = request.getRequestDispatcher("/jsp/index.jsp");
-			rd.forward(request, response);
+			
+			response.getWriter().write("<script>alert('新建成功！')</script>");
+			response.sendRedirect(request.getContextPath()+"/jsp/index.jsp");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
