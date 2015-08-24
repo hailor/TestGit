@@ -1,0 +1,6 @@
+Mysql账号root  密码root
+mvn compile
+mvn tomcat:run
+
+登录页面：
+http://localhost:8080/CSSJavaScriptExam8835/jsp/login.jsp

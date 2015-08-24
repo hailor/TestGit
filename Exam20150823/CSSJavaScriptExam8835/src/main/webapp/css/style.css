@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+*{
+	margin:0px;
+	padding:0px;
+}
+
+.body-bg{
+	background: url("../pictures/1.png");
+}
+.name{
+	margin-top:10px;
+	margin-left:10px;
+	color:#FFFFFF;
+}
+.form-class{
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	border: 2px solid;
+}
+.login-title{
+	border-bottom:2px solid;
+	width: 100%;
+}
+.login-title h4{
+	margin-left:10px;
+}
+
+.all{
+	margin:0px;
+	padding:0px;
+	width: 100%;
+}
+.top{
+	width:100%;
+	background-color: black;
+	color:#FFFFFF;
+	height: 50px;
+	font-size: 20px;
+	position: relative;
+	padding: 10px 10px 10px 10px;
+}
+
