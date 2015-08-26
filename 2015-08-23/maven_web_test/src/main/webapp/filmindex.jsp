@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
  <title>FilmIndex</title>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
     <!--<link rel="stylesheet" href="bootstrap.min.css">-->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
@@ -111,7 +111,7 @@
         </div>
 
     </div>
-<script src="jquery-2.1.4.min.js"></script>
-<script src="bootstrap.min.js"></script>
+<script src="JS/jquery-2.1.4.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
 </body>
 </html>

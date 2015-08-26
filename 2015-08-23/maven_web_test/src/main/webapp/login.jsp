@@ -4,9 +4,9 @@
 <html>
 <head>
 <title>登录页面</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="CSS/style.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"></head>
-<body background="Koala.jpg">
+<body background="pic/Koala.jpg">
     <div class="logo">8814郑晓彬</div>
     <div class="logintitle">电影租赁管理系统</div>
     <div class="loginmain">

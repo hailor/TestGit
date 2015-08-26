@@ -49,6 +49,7 @@ public class CheckLoginFilter implements Filter {
 			if(flag!=null&&flag.equals("success"))
 			{
 				//成功登录过的用户
+				System.out.println("login");
 				chain.doFilter(httprequest, httpresponse);
 			}
 			else {

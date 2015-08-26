@@ -3,4 +3,4 @@
 mvn tomcat:run
 在浏览器:localhost:8080/maven_web_test运行
 
-//插入，修改，删除都失败，目前的头绪是主键策略问题
+//目前完成：ajax请求Customer信息，分页，删除客户信息，登录和退出

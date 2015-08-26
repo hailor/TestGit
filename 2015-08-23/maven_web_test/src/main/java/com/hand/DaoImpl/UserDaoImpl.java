@@ -13,7 +13,7 @@ import com.hand.dao.UserDao;
 public class UserDaoImpl implements UserDao {
 
 	public ResultSet get(Connection conn, User user) throws SQLException {
-		PreparedStatement ps = conn.prepareStatement("SELECT first_name FROM customer");
+		PreparedStatement ps = conn.prepareStatement("SELECT first_name,l FROM customer");
 		return ps.executeQuery();
 	}
 

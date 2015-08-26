@@ -113,4 +113,70 @@ public class CustomerService {
 		return false;
 		
 	}
+	
+	//根据传入的分页号获取特定的用户列表
+	public ArrayList<Customer> getCustomerListStart(int start){
+		ArrayList<Customer> cuslist = new ArrayList<Customer>();
+		try {
+			conn = ConnectionFactory.getInstance ().makeConnection ();
+			conn.setAutoCommit (false) ;
+			ResultSet rs =  cusdao.getCustomerListStart(conn, start);
+			while(rs.next()){
+				Customer cus = new Customer();
+				cus.setCustomer_id(rs.getInt("customer_id"));
+				cus.setFirst_Name(rs.getString("first_name"));
+				cus.setLast_Name(rs.getString("last_name"));
+				cus.setAddress(rs.getString("address"));
+				cus.setEmail(rs.getString("email"));
+				cus.setLastUpdate(rs.getDate("last_update"));
+				cuslist.add(cus);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace ();
+			try {
+				conn.rollback ();
+			} catch (SQLException e1) {
+				e1.printStackTrace ();
+			}
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace ();
+			}
+		}
+		
+		return cuslist;
+		
+	}
+	//删除指定的客户信息
+	public boolean delCus(Customer cus){
+		int result = 0;
+		try {
+			conn = ConnectionFactory.getInstance ().makeConnection ();
+			conn.setAutoCommit (false) ;
+			result =  cusdao.deleteCusWithPayment(conn, cus);
+			result = cusdao.deleteCusWithRental(conn, cus);
+			result = cusdao.deleteCustomer(conn, cus);
+			conn.commit();
+		} catch (SQLException e) {
+			e.printStackTrace ();
+			try {
+				conn.rollback ();
+			} catch (SQLException e1) {
+				e1.printStackTrace ();
+			}
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace ();
+			}
+		}
+		if(result>0)return true;
+		else return false;
+	}
+	
+	
 }

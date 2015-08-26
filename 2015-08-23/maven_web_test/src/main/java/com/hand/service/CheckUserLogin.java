@@ -24,6 +24,7 @@ public class CheckUserLogin {
 		try {
 			conn = ConnectionFactory.getInstance ().makeConnection ();
 			conn.setAutoCommit (false) ;
+			conn.commit();
 			ResultSet resultSet = userDao.get (conn, user) ;
 			while ( resultSet.next ()) {
 				return true ;
@@ -50,8 +51,9 @@ public class CheckUserLogin {
 		try {
 			conn = ConnectionFactory.getInstance ().makeConnection ();
 			conn.setAutoCommit (false) ;
+			
 			ResultSet rs =  userDao.getfilmlist(conn);
-
+			
 			while(rs.next()){
 				Film film = new Film();
 				
