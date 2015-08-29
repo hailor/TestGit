@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+     >
+	<context:annotation-config/>
+	<context:component-scan base-package="com.*"/> 
+	
+   <!-- Initialization for data source -->
+   <bean id="dataSource" 
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+      <property name="url" value="jdbc:mysql://localhost:3306/sakila"/>
+      <property name="username" value="root"/>
+      <property name="password" value="tflzzn4112"/>
+   </bean>
+
+   <!-- Definition for studentJDBCTemplate bean ttt-->
+   <bean id="FilmJDBCTemplate"
+      class="com.hand.handtest.FilmJDBCTemplate">
+      <property name="dataSource"  ref="dataSource" />    
+   </bean>
+	
+	<bean id="cStartEventHandler" 
+         class="com.hand.handtest.CStartEventHandler"/>
+
+   <bean id="cStopEventHandler" 
+         class="com.hand.handtest.CStopEventHandler"/>
+   
+   <!-- 自定义before事件 -->      
+   <bean id="BeforeInsertEventHandler" 
+      class="com.hand.handtest.BeforeInsertEventHandler"/>   
+   <bean id="BeforeInsertFilmEventPublisher" 
+      class="com.hand.handtest.BeforeInsertEventPublisher"/>   
+	<!-- 自定义after事件 -->      
+   <bean id="AfterInsertEventHandler" 
+      class="com.hand.handtest.AfterInsertEventHandler"/>   
+   <bean id="AfterInsertFilmEventPublisher" 
+      class="com.hand.handtest.AfterInsertEventPublisher"/>   
+	
+         
+</beans>

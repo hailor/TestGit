@@ -1,0 +1,13 @@
+com\hand\handtest\FilmJDBCTemplate.class
+com\hand\handtest\BeforeInsertFilmEvent.class
+com\hand\handtest\AfterInsertEventPublisher.class
+com\hand\handtest\App.class
+com\hand\handtest\CStopEventHandler.class
+com\hand\handtest\FilmMapper.class
+com\hand\handtest\BeforeInsertEventHandler.class
+com\hand\Entity\Film.class
+com\hand\handtest\AfterInsertFilmEvent.class
+com\hand\handtest\CStartEventHandler.class
+com\hand\handtest\BeforeInsertEventPublisher.class
+com\hand\handtest\AfterInsertEventHandler.class
+com\hand\dao\FilmDAO.class
