@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	  <bean id="mysql" class="com.hand.jdbc.MySQL"></bean>
+	  <!--  
+	<bean id="person" class="com.hand.test1.Person">
+		<property name="helloMessage" ref="helloWorld"></property>
+	</bean>
+	-->
+	
+    
+    
+    <bean id="cStartEventHandler" 
+         class="com.hand.listener.StartEventHandler"/>
+
+   <bean id="cStopEventHandler" 
+         class="com.hand.listener.StopEventHandler"/>
+         
+         <bean id="afterInsertHandler" 
+         class="com.hand.listener.AfterInsertHandler"/>
+
+   <bean id="beforeInsertHandler" 
+         class="com.hand.listener.BeforeInsertHandler"/>
+	
+</beans>
